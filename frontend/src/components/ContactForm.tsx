@@ -11,15 +11,9 @@ type Values = {
   name: string;
   email: string;
   message: string;
-  website: string;
 };
 
-const initialValues: Values = {
-  name: "",
-  email: "",
-  message: "",
-  website: "",
-};
+const initialValues: Values = { name: "", email: "", message: "" };
 
 export default function ContactForm({ className = "", onSuccess }: Props) {
   const [values, setValues] = useState<Values>(initialValues);
@@ -54,51 +48,22 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
 
     try {
       setLoading(true);
-
-      const base = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(
-        /\/$/,
-        ""
-      );
-      const url = base ? `${base}/api/contact` : "/api/contact";
-
-      const res = await fetch(url, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
+      const data = (await res.json()) as { ok?: boolean; error?: string };
 
-      let data: unknown = null;
-      try {
-        data = await res.json();
-      } catch {
-        // certaines implémentations renvoient 204
-      }
-
-      const ok =
-        res.ok &&
-        (data == null ||
-          (typeof data === "object" &&
-            data !== null &&
-            "ok" in data &&
-            Boolean(data.ok)));
-
-      if (!ok) {
-        const msg =
-          (data &&
-            typeof data === "object" &&
-            // @ts-expect-error simple refinement
-            typeof data.error === "string" &&
-            // @ts-expect-error
-            data.error) ||
-          "Erreur d’envoi";
-        throw new Error(msg);
+      if (!res.ok || !data?.ok) {
+        throw new Error(data?.error || "Erreur d’envoi");
       }
 
       setSent(true);
       setValues(initialValues);
       onSuccess?.();
     } catch (err: unknown) {
-      // ✅ no 'any'
+      // ✅ plus de any
       const msg =
         err instanceof Error ? err.message : "Une erreur est survenue.";
       setError(msg);
@@ -113,18 +78,6 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
       onSubmit={handleSubmit}
       noValidate
     >
-      {/* Honeypot (caché via CSS) */}
-      <input
-        type="text"
-        name="website"
-        value={values.website}
-        onChange={handleChange}
-        autoComplete="off"
-        tabIndex={-1}
-        aria-hidden="true"
-        className="contact-form__hp"
-      />
-
       <label className="contact-form__field">
         <input
           type="text"

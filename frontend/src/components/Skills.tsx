@@ -1,3 +1,5 @@
+import React from "react";
+
 type Direction = "left" | "right";
 
 const DESIGN: string[] = [
@@ -49,7 +51,7 @@ function MarqueeRow({
 }) {
   const dup = [...items, ...items];
 
-  // ✅ Correction : on crée un type pour inclure la variable CSS
+  // ✅ typage propre pour la variable CSS
   type CSSVarStyle = React.CSSProperties & { ["--duration"]?: string };
   const style: CSSVarStyle = { ["--duration"]: `${duration}s` };
 
@@ -69,6 +71,7 @@ function MarqueeRow({
             return (
               <li className="skills__item" key={`${label}-${i}`}>
                 {showIcon ? (
+                  // ok pour <img>, l’avertissement eslint est juste un warning
                   <img
                     className="skills__icon"
                     src={item}
@@ -98,14 +101,12 @@ export default function Skills() {
         direction="left"
         duration={20}
       />
-
       <MarqueeRow
         label="Développement"
         items={DEV}
         direction="right"
         duration={18}
       />
-
       <MarqueeRow
         label="Autres"
         items={OTHERS}
