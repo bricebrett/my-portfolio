@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 5, "column": 0}, "map": {"version":3,"sources":["file:///Users/bricebrettinger/Desktop/OPENCLASSROOMS/my-portfolio/frontend/src/app/not-found.tsx"],"sourcesContent":["export default function NotFound() {\n  return (\n    <main>\n      <h1>404</h1>\n      <p>Sorry, this page was not found.</p>\n    </main>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;;0BACC,8OAAC;0BAAG;;;;;;0BACJ,8OAAC;0BAAE;;;;;;;;;;;;AAGT","debugId":null}}]
-}

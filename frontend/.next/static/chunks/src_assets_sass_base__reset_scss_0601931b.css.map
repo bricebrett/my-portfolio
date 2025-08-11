@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///turbopack:///[project]/src/assets/sass/base/Users/bricebrettinger/Desktop/OPENCLASSROOMS/my-portfolio/frontend/src/assets/sass/base/_reset.scss"],"sourcesContent":["@use \"../abstracts/mixins\" as mixins;\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  font-family: \"Inter\", \"Inter Placeholder\", sans-serif;\n  letter-spacing: -0.06em;\n}\n"],"names":[],"mappings":"AAEA;;;;;;AAMA","debugId":null}}]
-}

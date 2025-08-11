@@ -1,8 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/bricebrettinger/Desktop/OPENCLASSROOMS/my-portfolio/frontend/src/components/Title.tsx"],"sourcesContent":["import React from \"react\";\n\ninterface TitleProps {\n  text: string;\n  align?: \"left\" | \"center\";\n}\n\nexport default function Title({ text, align = \"left\" }: TitleProps) {\n  return <h1 className={`page-title ${align}`}>{text}</h1>;\n}\n"],"names":[],"mappings":";;;;;AAOe,SAAS,MAAM,EAAE,IAAI,EAAE,QAAQ,MAAM,EAAc;IAChE,qBAAO,8OAAC;QAAG,WAAW,CAAC,WAAW,EAAE,OAAO;kBAAG;;;;;;AAChD","debugId":null}},
-    {"offset": {"line": 37, "column": 0}, "map": {"version":3,"sources":["file:///Users/bricebrettinger/Desktop/OPENCLASSROOMS/my-portfolio/frontend/src/app/about/page.tsx"],"sourcesContent":["import Title from \"@/components/Title\";\n\nexport default function AboutPage() {\n  return (\n    <section className=\"about-page\">\n      <Title text=\"BRICE BRETTINGER\" align=\"center\" />\n      <h2 className=\"about__title\">about.</h2>\n    </section>\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;;;AAEe,SAAS;IACtB,qBACE,8OAAC;QAAQ,WAAU;;0BACjB,8OAAC,2HAAA,CAAA,UAAK;gBAAC,MAAK;gBAAmB,OAAM;;;;;;0BACrC,8OAAC;gBAAG,WAAU;0BAAe;;;;;;;;;;;;AAGnC","debugId":null}}]
-}

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 6, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"","debugId":null}},
-    {"offset": {"line": 18, "column": 0}, "map": {"version":3,"sources":["file:///Users/bricebrettinger/Desktop/OPENCLASSROOMS/my-portfolio/frontend/src/app/contact/page.tsx"],"sourcesContent":["export default function ContactPage() {\n  return (\n    <section className=\"contact-page\">\n      <div className=\"contact-page__container\">\n        <header className=\"contact-page__header\">\n          <Title text=\"SEND A REQUEST\" align=\"left\" />\n        </header>\n\n        <div className=\"contact-page__grid\">\n          <div className=\"contact-page__info\">\n            brice.dev\n            <br />\n            hello@brice.dev\n          </div>\n\n          <ContactForm className=\"contact-page__form\" />\n        </div>\n      </div>\n    </section>\n  );\n}\n"],"names":[],"mappings":";;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAQ,WAAU;kBACjB,cAAA,8OAAC;YAAI,WAAU;;8BACb,8OAAC;oBAAO,WAAU;8BAChB,cAAA,8OAAC;wBAAM,MAAK;wBAAiB,OAAM;;;;;;;;;;;8BAGrC,8OAAC;oBAAI,WAAU;;sCACb,8OAAC;4BAAI,WAAU;;gCAAqB;8CAElC,8OAAC;;;;;gCAAK;;;;;;;sCAIR,8OAAC;4BAAY,WAAU;;;;;;;;;;;;;;;;;;;;;;;AAKjC","debugId":null}}]
-}
