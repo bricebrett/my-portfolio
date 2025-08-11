@@ -1,80 +1,136 @@
-// src/app/api/contact/route.ts
-import { NextResponse } from "next/server";
-import { Resend } from "resend";
+"use client";
 
-type ContactBody = {
+import { FormEvent, useState } from "react";
+
+type Props = {
+  className?: string;
+  onSuccess?: () => void;
+};
+
+type Values = {
   name: string;
   email: string;
   message: string;
 };
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const EMAIL_FROM =
-  process.env.EMAIL_FROM || "Portfolio <onboarding@resend.dev>";
-const EMAIL_TO = process.env.EMAIL_TO || "";
+const initialValues: Values = {
+  name: "",
+  email: "",
+  message: "",
+};
 
-const resend = RESEND_API_KEY ? new Resend(RESEND_API_KEY) : null;
+export default function ContactForm({ className = "", onSuccess }: Props) {
+  const [values, setValues] = useState<Values>(initialValues);
+  const [loading, setLoading] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-function isEmail(v: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-}
-
-export async function POST(req: Request) {
-  try {
-    const body = (await req.json()) as Partial<ContactBody>;
-    const name = (body.name || "").trim();
-    const email = (body.email || "").trim();
-    const message = (body.message || "").trim();
-
-    // validations simples
-    if (!name || !email || !message) {
-      return NextResponse.json(
-        { ok: false, error: "Merci de remplir tous les champs." },
-        { status: 400 }
-      );
-    }
-    if (!isEmail(email)) {
-      return NextResponse.json(
-        { ok: false, error: "Merci d’entrer un email valide." },
-        { status: 400 }
-      );
-    }
-
-    // Envoi avec Resend si configuré
-    if (resend && EMAIL_TO) {
-      const subject = `Nouveau message de ${name}`;
-      const html = `
-        <h2>Nouveau message du portfolio</h2>
-        <p><strong>Nom:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, "<br/>")}</p>
-      `;
-
-      const { error } = await resend.emails.send({
-        from: EMAIL_FROM,
-        to: [EMAIL_TO],
-        subject,
-        html,
-        text: `Nom: ${name}\nEmail: ${email}\n\n${message}`,
-        // Permettre de répondre directement à l’expéditeur :
-        replyTo: [email],
-      });
-
-      if (error) {
-        return NextResponse.json(
-          { ok: false, error: String(error) },
-          { status: 400 }
-        );
-      }
-    } else {
-      // Mode développement sans Resend (on "simule" l'envoi)
-      console.log("[DEV] Contact message:", { name, email, message });
-    }
-
-    return NextResponse.json({ ok: true });
-  } catch (err: unknown) {
-    const msg = err instanceof Error ? err.message : "Unknown error";
-    return NextResponse.json({ ok: false, error: msg }, { status: 400 });
+  function handleChange(
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) {
+    const { name, value } = e.target;
+    setValues((v) => ({ ...v, [name]: value }));
   }
+
+  function isEmail(v: string) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setError(null);
+    setSent(false);
+
+    if (!values.name || !values.email || !values.message) {
+      setError("Merci de remplir tous les champs.");
+      return;
+    }
+    if (!isEmail(values.email)) {
+      setError("Merci d’entrer un email valide.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.ok) throw new Error(data.error || "Erreur d’envoi");
+
+      setSent(true);
+      setValues(initialValues);
+      onSuccess?.();
+    } catch (err: any) {
+      setError(err?.message ?? "Une erreur est survenue.");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  return (
+    <form
+      className={`contact-form ${className}`}
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      <label className="contact-form__field">
+        <input
+          type="text"
+          name="name"
+          placeholder="Your name"
+          value={values.name}
+          onChange={handleChange}
+          disabled={loading}
+          aria-required="true"
+        />
+      </label>
+
+      <label className="contact-form__field">
+        <input
+          type="email"
+          name="email"
+          placeholder="Your Email"
+          value={values.email}
+          onChange={handleChange}
+          disabled={loading}
+          aria-required="true"
+        />
+      </label>
+
+      <label className="contact-form__field">
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          rows={6}
+          value={values.message}
+          onChange={handleChange}
+          disabled={loading}
+          aria-required="true"
+        />
+      </label>
+
+      {error && (
+        <p className="contact-form__error" role="alert">
+          {error}
+        </p>
+      )}
+      {sent && (
+        <p className="contact-form__success" role="status">
+          Merci ! Votre message a bien été envoyé.
+        </p>
+      )}
+
+      <button
+        className="contact-form__submit"
+        type="submit"
+        disabled={loading}
+        aria-busy={loading}
+      >
+        {loading ? "Sending…" : "Send It!"}
+      </button>
+    </form>
+  );
 }
