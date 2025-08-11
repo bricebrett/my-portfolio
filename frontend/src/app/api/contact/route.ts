@@ -22,7 +22,7 @@ export async function POST(req: Request) {
     const { data, error } = await resend.emails.send({
       from: "Portfolio <no-reply@yourdomain.com>", // configure un domaine sur Resend
       to: ["you@yourdomain.com"], // où tu veux recevoir
-      reply_to: email,
+      //   reply_to: email,
       subject: `New message from ${name}`,
       text: `From: ${name} <${email}>\n\n${message}`,
     });
