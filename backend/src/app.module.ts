@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ProjectsModule } from './projects/projects.module';
 import { ConfigModule } from '@nestjs/config';
+import { ProjectsModule } from './projects/projects.module';
 
 @Module({
   imports: [
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    ConfigModule.forRoot(),
-    MongooseModule.forRoot(process.env.MONGODB_URI || ''),
+    ConfigModule.forRoot({ isGlobal: true }),
+    MongooseModule.forRoot(process.env.MONGODB_URI as string),
     ProjectsModule,
   ],
 })

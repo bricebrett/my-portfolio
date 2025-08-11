@@ -8,14 +8,18 @@ export default function WorksPage() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/projects")
-      .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) =>
-        console.error("Erreur lors de la récupération des projets :", err)
-      );
+    const base = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(
+      /\/$/,
+      ""
+    );
+    fetch(`${base}/projects`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
+      .then(setProjects)
+      .catch((err) => console.error("Erreur de chargement des projets :", err));
   }, []);
-  console.log(projects.length);
 
   return (
     <section className="works-page">
