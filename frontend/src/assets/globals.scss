@@ -1,0 +1,19 @@
+@use "./sass/abstracts/mixins";
+
+@use "./sass/base/reset";
+
+@use "./sass/components/header";
+@use "./sass/components/fullwidthdivider";
+@use "./sass/components/hero.scss";
+@use "./sass/components/works.scss";
+@use "./sass/components/about.scss";
+@use "./sass/components/footer";
+@use "./sass/components/redirectionButton";
+@use "./sass/components/projectCard";
+@use "./sass/components/projectGallery";
+@use "./sass/components/worksPage";
+@use "./sass/components/title";
+@use "./sass/components/aboutPage";
+@use "./sass/components/skills";
+@use "./sass/components/contactPage";
+@use "./sass/components/contactForm";

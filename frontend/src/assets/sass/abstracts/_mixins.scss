@@ -1,0 +1,12 @@
+@mixin text-style-default {
+  font-family: "Inter", "Inter Placeholder", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-variation-settings: normal;
+  letter-spacing: -0.04em;
+  line-height: 1.2em;
+  color: black;
+  text-decoration: none;
+  text-transform: none;
+  text-align: justify;
+}

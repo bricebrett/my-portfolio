@@ -1,0 +1,18 @@
+.works__button,
+.about__button {
+  color: black;
+  background: linear-gradient(45deg, #000 50%, transparent 0) right / 250% 100%
+      no-repeat,
+    linear-gradient(45deg, transparent 50%, #000 0) left / 250% 100% no-repeat;
+  transition: 0.5s;
+  padding: 16px 26px;
+  cursor: pointer;
+  font-size: 16px;
+  text-decoration: none;
+  background-color: #efefef;
+
+  &:hover {
+    background-position: center;
+    color: white;
+  }
+}

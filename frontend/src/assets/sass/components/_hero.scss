@@ -1,0 +1,59 @@
+@use "../abstracts/mixins" as mixins;
+
+.hero {
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 800px;
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin: 0;
+
+    &--bottom {
+      margin-top: 60px;
+      margin-bottom: 110px;
+    }
+  }
+
+  &__title {
+    font-size: 174px;
+    letter-spacing: -0.09em;
+    margin: 0;
+  }
+
+  &__photo {
+    border-radius: 140px;
+    flex: none;
+    height: 168px;
+    overflow: hidden;
+    position: relative;
+    width: 168px;
+    border: 1px solid black;
+
+    img {
+      position: absolute;
+      border-radius: inherit;
+      inset: 0px;
+    }
+  }
+
+  &__email {
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+    font-family: "Inter Medium", Inter, Inter, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+
+  &__description {
+    max-width: 763px;
+    font-size: 40px;
+    line-height: 1.1em;
+    margin: 0;
+    @include mixins.text-style-default;
+  }
+}

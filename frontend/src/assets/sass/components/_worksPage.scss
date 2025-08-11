@@ -1,0 +1,12 @@
+.works-page {
+  padding: 30px 80px 80px;
+  &__subtitle {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex: none;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    margin-bottom: 60px;
+  }
+}

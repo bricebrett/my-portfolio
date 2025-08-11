@@ -1,0 +1,12 @@
+.about-page {
+  padding: 30px 80px 80px;
+
+  &__block {
+    &--skills {
+      margin-top: 60px;
+      gap: 30px;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}
