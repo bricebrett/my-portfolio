@@ -11,12 +11,14 @@ type Values = {
   name: string;
   email: string;
   message: string;
+  website: string;
 };
 
 const initialValues: Values = {
   name: "",
   email: "",
   message: "",
+  website: "",
 };
 
 export default function ContactForm({ className = "", onSuccess }: Props) {
@@ -52,19 +54,54 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
 
     try {
       setLoading(true);
-      const res = await fetch("/api/contact", {
+
+      const base = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(
+        /\/$/,
+        ""
+      );
+      const url = base ? `${base}/api/contact` : "/api/contact";
+
+      const res = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.error || "Erreur d’envoi");
+
+      let data: unknown = null;
+      try {
+        data = await res.json();
+      } catch {
+        // certaines implémentations renvoient 204
+      }
+
+      const ok =
+        res.ok &&
+        (data == null ||
+          (typeof data === "object" &&
+            data !== null &&
+            "ok" in data &&
+            Boolean(data.ok)));
+
+      if (!ok) {
+        const msg =
+          (data &&
+            typeof data === "object" &&
+            // @ts-expect-error simple refinement
+            typeof data.error === "string" &&
+            // @ts-expect-error
+            data.error) ||
+          "Erreur d’envoi";
+        throw new Error(msg);
+      }
 
       setSent(true);
       setValues(initialValues);
       onSuccess?.();
-    } catch (err: any) {
-      setError(err?.message ?? "Une erreur est survenue.");
+    } catch (err: unknown) {
+      // ✅ no 'any'
+      const msg =
+        err instanceof Error ? err.message : "Une erreur est survenue.";
+      setError(msg);
     } finally {
       setLoading(false);
     }
@@ -76,6 +113,18 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
       onSubmit={handleSubmit}
       noValidate
     >
+      {/* Honeypot (caché via CSS) */}
+      <input
+        type="text"
+        name="website"
+        value={values.website}
+        onChange={handleChange}
+        autoComplete="off"
+        tabIndex={-1}
+        aria-hidden="true"
+        className="contact-form__hp"
+      />
+
       <label className="contact-form__field">
         <input
           type="text"

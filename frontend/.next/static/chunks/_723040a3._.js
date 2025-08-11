@@ -8,6 +8,7 @@ var { k: __turbopack_refresh__, m: module } = __turbopack_context__;
 __turbopack_context__.s({
     "default": ()=>ContactForm
 });
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
@@ -17,7 +18,8 @@ var _s = __turbopack_context__.k.signature();
 const initialValues = {
     name: "",
     email: "",
-    message: ""
+    message: "",
+    website: ""
 };
 function ContactForm(param) {
     let { className = "", onSuccess } = param;
@@ -50,21 +52,35 @@ function ContactForm(param) {
         }
         try {
             setLoading(true);
-            const res = await fetch("/api/contact", {
+            const base = (__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/$/, "");
+            const url = base ? "".concat(base, "/api/contact") : "/api/contact";
+            const res = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(values)
             });
-            const data = await res.json();
-            if (!res.ok || !data.ok) throw new Error(data.error || "Erreur d’envoi");
+            let data = null;
+            try {
+                data = await res.json();
+            } catch (e) {
+            // certaines implémentations renvoient 204
+            }
+            const ok = res.ok && (data == null || typeof data === "object" && data !== null && "ok" in data && Boolean(data.ok));
+            if (!ok) {
+                const msg = data && typeof data === "object" && // @ts-expect-error simple refinement
+                typeof data.error === "string" && // @ts-expect-error
+                data.error || "Erreur d’envoi";
+                throw new Error(msg);
+            }
             setSent(true);
             setValues(initialValues);
             onSuccess === null || onSuccess === void 0 ? void 0 : onSuccess();
         } catch (err) {
-            var _err_message;
-            setError((_err_message = err === null || err === void 0 ? void 0 : err.message) !== null && _err_message !== void 0 ? _err_message : "Une erreur est survenue.");
+            // ✅ no 'any'
+            const msg = err instanceof Error ? err.message : "Une erreur est survenue.";
+            setError(msg);
         } finally{
             setLoading(false);
         }
@@ -74,6 +90,20 @@ function ContactForm(param) {
         onSubmit: handleSubmit,
         noValidate: true,
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                name: "website",
+                value: values.website,
+                onChange: handleChange,
+                autoComplete: "off",
+                tabIndex: -1,
+                "aria-hidden": "true",
+                className: "contact-form__hp"
+            }, void 0, false, {
+                fileName: "[project]/src/components/ContactForm.tsx",
+                lineNumber: 117,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                 className: "contact-form__field",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -86,12 +116,12 @@ function ContactForm(param) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 80,
+                    lineNumber: 129,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 79,
+                lineNumber: 128,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -106,12 +136,12 @@ function ContactForm(param) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 92,
+                    lineNumber: 141,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 91,
+                lineNumber: 140,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -126,12 +156,12 @@ function ContactForm(param) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 104,
+                    lineNumber: 153,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 103,
+                lineNumber: 152,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -140,7 +170,7 @@ function ContactForm(param) {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 116,
+                lineNumber: 165,
                 columnNumber: 9
             }, this),
             sent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -149,7 +179,7 @@ function ContactForm(param) {
                 children: "Merci ! Votre message a bien été envoyé."
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 121,
+                lineNumber: 170,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -160,13 +190,13 @@ function ContactForm(param) {
                 children: loading ? "Sending…" : "Send It!"
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 126,
+                lineNumber: 175,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ContactForm.tsx",
-        lineNumber: 74,
+        lineNumber: 111,
         columnNumber: 5
     }, this);
 }

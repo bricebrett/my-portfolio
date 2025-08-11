@@ -14,7 +14,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 const initialValues = {
     name: "",
     email: "",
-    message: ""
+    message: "",
+    website: ""
 };
 function ContactForm({ className = "", onSuccess }) {
     const [values, setValues] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(initialValues);
@@ -45,20 +46,35 @@ function ContactForm({ className = "", onSuccess }) {
         }
         try {
             setLoading(true);
-            const res = await fetch("/api/contact", {
+            const base = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(/\/$/, "");
+            const url = base ? `${base}/api/contact` : "/api/contact";
+            const res = await fetch(url, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(values)
             });
-            const data = await res.json();
-            if (!res.ok || !data.ok) throw new Error(data.error || "Erreur d’envoi");
+            let data = null;
+            try {
+                data = await res.json();
+            } catch  {
+            // certaines implémentations renvoient 204
+            }
+            const ok = res.ok && (data == null || typeof data === "object" && data !== null && "ok" in data && Boolean(data.ok));
+            if (!ok) {
+                const msg = data && typeof data === "object" && // @ts-expect-error simple refinement
+                typeof data.error === "string" && // @ts-expect-error
+                data.error || "Erreur d’envoi";
+                throw new Error(msg);
+            }
             setSent(true);
             setValues(initialValues);
             onSuccess?.();
         } catch (err) {
-            setError(err?.message ?? "Une erreur est survenue.");
+            // ✅ no 'any'
+            const msg = err instanceof Error ? err.message : "Une erreur est survenue.";
+            setError(msg);
         } finally{
             setLoading(false);
         }
@@ -68,6 +84,20 @@ function ContactForm({ className = "", onSuccess }) {
         onSubmit: handleSubmit,
         noValidate: true,
         children: [
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                type: "text",
+                name: "website",
+                value: values.website,
+                onChange: handleChange,
+                autoComplete: "off",
+                tabIndex: -1,
+                "aria-hidden": "true",
+                className: "contact-form__hp"
+            }, void 0, false, {
+                fileName: "[project]/src/components/ContactForm.tsx",
+                lineNumber: 117,
+                columnNumber: 7
+            }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                 className: "contact-form__field",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -80,12 +110,12 @@ function ContactForm({ className = "", onSuccess }) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 80,
+                    lineNumber: 129,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 79,
+                lineNumber: 128,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -100,12 +130,12 @@ function ContactForm({ className = "", onSuccess }) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 92,
+                    lineNumber: 141,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 91,
+                lineNumber: 140,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -120,12 +150,12 @@ function ContactForm({ className = "", onSuccess }) {
                     "aria-required": "true"
                 }, void 0, false, {
                     fileName: "[project]/src/components/ContactForm.tsx",
-                    lineNumber: 104,
+                    lineNumber: 153,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 103,
+                lineNumber: 152,
                 columnNumber: 7
             }, this),
             error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -134,7 +164,7 @@ function ContactForm({ className = "", onSuccess }) {
                 children: error
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 116,
+                lineNumber: 165,
                 columnNumber: 9
             }, this),
             sent && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -143,7 +173,7 @@ function ContactForm({ className = "", onSuccess }) {
                 children: "Merci ! Votre message a bien été envoyé."
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 121,
+                lineNumber: 170,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -154,13 +184,13 @@ function ContactForm({ className = "", onSuccess }) {
                 children: loading ? "Sending…" : "Send It!"
             }, void 0, false, {
                 fileName: "[project]/src/components/ContactForm.tsx",
-                lineNumber: 126,
+                lineNumber: 175,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/ContactForm.tsx",
-        lineNumber: 74,
+        lineNumber: 111,
         columnNumber: 5
     }, this);
 }
