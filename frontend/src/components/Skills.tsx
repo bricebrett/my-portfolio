@@ -49,11 +49,12 @@ function MarqueeRow({
 }) {
   const dup = [...items, ...items];
 
+  // ✅ Correction : on crée un type pour inclure la variable CSS
+  type CSSVarStyle = React.CSSProperties & { ["--duration"]?: string };
+  const style: CSSVarStyle = { ["--duration"]: `${duration}s` };
+
   return (
-    <div
-      className="skills__row"
-      style={{ ["--duration" as any]: `${duration}s` }}
-    >
+    <div className="skills__row" style={style}>
       <span className="skills__label">{label}</span>
 
       <div className="skills__viewport">

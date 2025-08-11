@@ -186,18 +186,19 @@ function MarqueeRow({ label, items, direction = "left", duration = 18 }) {
         ...items,
         ...items
     ];
+    const style = {
+        ["--duration"]: `${duration}s`
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "skills__row",
-        style: {
-            ["--duration"]: `${duration}s`
-        },
+        style: style,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                 className: "skills__label",
                 children: label
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 57,
+                lineNumber: 58,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -216,30 +217,30 @@ function MarqueeRow({ label, items, direction = "left", duration = 18 }) {
                                 title: labelFromPath(item)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Skills.tsx",
-                                lineNumber: 71,
+                                lineNumber: 72,
                                 columnNumber: 19
                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                 className: "skills__text",
                                 children: item
                             }, void 0, false, {
                                 fileName: "[project]/src/components/Skills.tsx",
-                                lineNumber: 78,
+                                lineNumber: 79,
                                 columnNumber: 19
                             }, this)
                         }, `${label}-${i}`, false, {
                             fileName: "[project]/src/components/Skills.tsx",
-                            lineNumber: 69,
+                            lineNumber: 70,
                             columnNumber: 15
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/src/components/Skills.tsx",
-                    lineNumber: 60,
+                    lineNumber: 61,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 59,
+                lineNumber: 60,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -247,13 +248,13 @@ function MarqueeRow({ label, items, direction = "left", duration = 18 }) {
                 "aria-hidden": "true"
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 86,
+                lineNumber: 87,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Skills.tsx",
-        lineNumber: 53,
+        lineNumber: 57,
         columnNumber: 5
     }, this);
 }
@@ -269,7 +270,7 @@ function Skills() {
                 duration: 20
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 94,
+                lineNumber: 95,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
@@ -279,7 +280,7 @@ function Skills() {
                 duration: 18
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 101,
+                lineNumber: 102,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(MarqueeRow, {
@@ -289,13 +290,13 @@ function Skills() {
                 duration: 22
             }, void 0, false, {
                 fileName: "[project]/src/components/Skills.tsx",
-                lineNumber: 108,
+                lineNumber: 109,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Skills.tsx",
-        lineNumber: 93,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
