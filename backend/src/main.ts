@@ -7,7 +7,7 @@ async function bootstrap() {
 
   app.enableCors({
     origin: [
-      'https://my-portfolio-743wf2a0c-bricebretts-projects.vercel.app',
+      'https://my-portfolio-nl2il2ts8-bricebretts-projects.vercel.app/',
       'http://localhost:3000',
     ],
   });

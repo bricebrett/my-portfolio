@@ -7,7 +7,7 @@ export default function Works() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
+    fetch("https://my-portfolio-production-1d50.up.railway.app/projects")
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
