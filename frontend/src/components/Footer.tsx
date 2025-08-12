@@ -8,8 +8,8 @@ export default function Footer() {
 
       <div className="footer__middle">
         <h2 className="footer__middle-text">
-          Lorem ipsum dolor sit amet , consectetur elit. <br />
-          Integer vitae justo sapien.
+          Que ce soit pour une question, un échange ou un futur projet, je suis
+          disponible.
         </h2>
         <div className="footer__middle-actions">
           <button>Contact</button>

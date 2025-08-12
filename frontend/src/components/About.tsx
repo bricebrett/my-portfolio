@@ -17,20 +17,22 @@ export default function About({ showButton = true }: AboutProps) {
       </div>
 
       <h3 className="about__headline">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur non
-        magna at justo porta ultrices.
+        Je conçois des expériences web alliant esthétique et simplicité. Chaque
+        projet est une occasion d’explorer, tester et trouver l’équilibre
+        parfait entre design et fonctionnalité.
       </h3>
 
       <div className="about__content">
-        <div className="about__image-wrapper">
+        {/* <div className="about__image-wrapper">
           <img src="" alt="" />
-        </div>
+        </div> */}
 
         <p className="about__description">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo.
+          Curieux et toujours en veille, je m’inspire autant du design
+          contemporain que des nouvelles tendances technologiques. Que ce soit à
+          travers un code propre ou un visuel soigné, j’accorde de l’importance
+          aux détails qui font la différence. Pour moi, un bon projet est celui
+          qui parvient à combiner performance, clarté et identité forte.
         </p>
       </div>
     </section>
