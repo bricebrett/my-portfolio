@@ -10,9 +10,8 @@ export default function Hero() {
       <div className="hero__row hero__row--bottom">
         <p className="hero__email">nom@site.com</p>
         <p className="hero__description">
-          Lorem ipsum dolor sit amet, consectetur elit. Integer vitae justo
-          sapien. Aenean luctus, tortor et at viverra. Donec sed nunc. Proin
-          feugiat.
+          Hello, étant passionné par le web, je transforme des concepts en
+          projets qui prennent vie à l’écran.
         </p>
       </div>
     </section>
