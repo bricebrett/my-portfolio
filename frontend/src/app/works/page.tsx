@@ -8,11 +8,7 @@ export default function WorksPage() {
   const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const base = (process.env.NEXT_PUBLIC_API_BASE_URL || "").replace(
-      /\/$/,
-      ""
-    );
-    fetch(`${base}/projects`)
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/projects`)
       .then((res) => {
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
         return res.json();
