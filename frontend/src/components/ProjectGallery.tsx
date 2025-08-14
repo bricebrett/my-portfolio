@@ -22,8 +22,8 @@ export default function ProjectGallery({ projects, limit }: Props) {
   return (
     <div className="project-gallery">
       {items.map((project) => (
-        <ScrollReveal>
-          <ProjectCard key={project._id} project={project} />
+        <ScrollReveal key={project._id}>
+          <ProjectCard project={project} />
         </ScrollReveal>
       ))}
     </div>
