@@ -10,3 +10,15 @@
   text-transform: none;
   text-align: justify;
 }
+
+// @mixin fade-in-up($distance: 100px, $duration: 2s, $easing: ease) {
+//   opacity: 0;
+//   transform: translateY($distance);
+//   transition: opacity $duration $easing, transform $duration $easing;
+
+//   &.show,
+//   .show & {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }

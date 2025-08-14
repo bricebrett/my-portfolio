@@ -1,3 +1,9 @@
+import ScrollReveal from "./ScrollReveal";
+
 export default function FullWidthDivider() {
-  return <div className="divider"></div>;
+  return (
+    <ScrollReveal>
+      <div className="divider"></div>
+    </ScrollReveal>
+  );
 }

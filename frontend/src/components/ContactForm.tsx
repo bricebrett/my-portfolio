@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 type Props = {
   className?: string;
@@ -73,66 +74,68 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
   }
 
   return (
-    <form
-      className={`contact-form ${className}`}
-      onSubmit={handleSubmit}
-      noValidate
-    >
-      <label className="contact-form__field">
-        <input
-          type="text"
-          name="name"
-          placeholder="Your name"
-          value={values.name}
-          onChange={handleChange}
-          disabled={loading}
-          aria-required="true"
-        />
-      </label>
-
-      <label className="contact-form__field">
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          value={values.email}
-          onChange={handleChange}
-          disabled={loading}
-          aria-required="true"
-        />
-      </label>
-
-      <label className="contact-form__field">
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          rows={6}
-          value={values.message}
-          onChange={handleChange}
-          disabled={loading}
-          aria-required="true"
-        />
-      </label>
-
-      {error && (
-        <p className="contact-form__error" role="alert">
-          {error}
-        </p>
-      )}
-      {sent && (
-        <p className="contact-form__success" role="status">
-          Merci ! Votre message a bien été envoyé.
-        </p>
-      )}
-
-      <button
-        className="contact-form__submit"
-        type="submit"
-        disabled={loading}
-        aria-busy={loading}
+    <ScrollReveal>
+      <form
+        className={`contact-form ${className}`}
+        onSubmit={handleSubmit}
+        noValidate
       >
-        {loading ? "Sending…" : "Send It!"}
-      </button>
-    </form>
+        <label className="contact-form__field">
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            value={values.name}
+            onChange={handleChange}
+            disabled={loading}
+            aria-required="true"
+          />
+        </label>
+
+        <label className="contact-form__field">
+          <input
+            type="email"
+            name="email"
+            placeholder="Your Email"
+            value={values.email}
+            onChange={handleChange}
+            disabled={loading}
+            aria-required="true"
+          />
+        </label>
+
+        <label className="contact-form__field">
+          <textarea
+            name="message"
+            placeholder="Your Message"
+            rows={6}
+            value={values.message}
+            onChange={handleChange}
+            disabled={loading}
+            aria-required="true"
+          />
+        </label>
+
+        {error && (
+          <p className="contact-form__error" role="alert">
+            {error}
+          </p>
+        )}
+        {sent && (
+          <p className="contact-form__success" role="status">
+            Merci ! Votre message a bien été envoyé.
+          </p>
+        )}
+
+        <button
+          className="contact-form__submit"
+          type="submit"
+          disabled={loading}
+          aria-busy={loading}
+        >
+          {loading ? "Sending…" : "Send It!"}
+        </button>
+      </form>
+    </ScrollReveal>
   );
 }

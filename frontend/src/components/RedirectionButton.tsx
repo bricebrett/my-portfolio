@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
+import ScrollReveal from "./ScrollReveal";
 
 type ButtonProps = {
   href: string;
@@ -13,8 +14,10 @@ export default function RedirectionButton({
   className = "",
 }: ButtonProps) {
   return (
-    <Link href={href} className={`button ${className}`}>
-      {children}
-    </Link>
+    <ScrollReveal>
+      <Link href={href} className={`button ${className}`}>
+        {children}
+      </Link>
+    </ScrollReveal>
   );
 }

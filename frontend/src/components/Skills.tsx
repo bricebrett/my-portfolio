@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion, useReducedMotion } from "framer-motion";
 
 type Direction = "left" | "right";
 
@@ -38,7 +40,7 @@ function labelFromPath(path: string) {
   return name.replace(/\.(svg|png|jpg|jpeg|webp)$/i, "").replace(/-/g, " ");
 }
 
-function MarqueeRow({
+function TickerRow({
   label,
   items,
   direction = "left",
@@ -50,28 +52,39 @@ function MarqueeRow({
   duration?: number;
 }) {
   const dup = [...items, ...items];
+  const prefersReducedMotion = useReducedMotion();
 
-  // ✅ typage propre pour la variable CSS
   type CSSVarStyle = React.CSSProperties & { ["--duration"]?: string };
   const style: CSSVarStyle = { ["--duration"]: `${duration}s` };
+
+  const xFrames = direction === "right" ? ["-50%", "0%"] : ["0%", "-50%"];
 
   return (
     <div className="skills__row" style={style}>
       <span className="skills__label">{label}</span>
 
       <div className="skills__viewport">
-        <ul
+        <motion.ul
           className={`skills__track ${
             direction === "right" ? "is-right" : "is-left"
           }`}
           aria-hidden="true"
+          animate={prefersReducedMotion ? {} : { x: xFrames }}
+          transition={
+            prefersReducedMotion
+              ? undefined
+              : {
+                  duration,
+                  ease: "linear",
+                  repeat: Infinity,
+                }
+          }
         >
           {dup.map((item, i) => {
             const showIcon = isIconPath(item);
             return (
               <li className="skills__item" key={`${label}-${i}`}>
                 {showIcon ? (
-                  // ok pour <img>, l’avertissement eslint est juste un warning
                   <img
                     className="skills__icon"
                     src={item}
@@ -84,7 +97,7 @@ function MarqueeRow({
               </li>
             );
           })}
-        </ul>
+        </motion.ul>
       </div>
 
       <div className="skills__fade" aria-hidden="true" />
@@ -95,24 +108,14 @@ function MarqueeRow({
 export default function Skills() {
   return (
     <section className="skills" aria-label="skills sections">
-      <MarqueeRow
-        label="Design"
-        items={DESIGN}
-        direction="left"
-        duration={20}
-      />
-      <MarqueeRow
+      <TickerRow label="Design" items={DESIGN} direction="left" duration={20} />
+      <TickerRow
         label="Développement"
         items={DEV}
         direction="right"
         duration={18}
       />
-      <MarqueeRow
-        label="Autres"
-        items={OTHERS}
-        direction="left"
-        duration={22}
-      />
+      <TickerRow label="Autres" items={OTHERS} direction="left" duration={22} />
     </section>
   );
 }

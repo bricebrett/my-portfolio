@@ -1,21 +1,27 @@
+import ScrollReveal from "./ScrollReveal";
+
 export default function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__top">
-        <a href="https://linkedin.com">Linkedin</a>
-        <a href="https://github.com">GitHub</a>
-      </div>
-
-      <div className="footer__middle">
-        <h2 className="footer__middle-text">
-          Que ce soit pour une question, un échange ou un futur projet, je suis
-          disponible.
-        </h2>
-        <div className="footer__middle-actions">
-          <button>Contact</button>
-          <div className="dot">Available For Work</div>
+      <ScrollReveal>
+        <div className="footer__top">
+          <a href="https://linkedin.com">Linkedin</a>
+          <a href="https://github.com">GitHub</a>
         </div>
-      </div>
+      </ScrollReveal>
+
+      <ScrollReveal>
+        <div className="footer__middle">
+          <h2 className="footer__middle-text">
+            Que ce soit pour une question, un échange ou un futur projet, je
+            suis disponible.
+          </h2>
+          <div className="footer__middle-actions">
+            <button>Contact</button>
+            <div className="dot">Available For Work</div>
+          </div>
+        </div>
+      </ScrollReveal>
 
       <div className="footer__bottom">
         <div className="footer__bottom-section">

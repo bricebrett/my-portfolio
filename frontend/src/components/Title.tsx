@@ -1,4 +1,5 @@
 import React from "react";
+import ScrollReveal from "./ScrollReveal";
 
 interface TitleProps {
   text: string;
@@ -6,5 +7,9 @@ interface TitleProps {
 }
 
 export default function Title({ text, align = "left" }: TitleProps) {
-  return <h1 className={`page-title ${align}`}>{text}</h1>;
+  return (
+    <ScrollReveal>
+      <h1 className={`page-title ${align}`}>{text}</h1>
+    </ScrollReveal>
+  );
 }

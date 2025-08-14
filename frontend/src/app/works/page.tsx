@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ProjectGallery, { Project } from "@/components/ProjectGallery";
 import Title from "@/components/Title";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function WorksPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -20,7 +21,9 @@ export default function WorksPage() {
   return (
     <section className="works-page">
       <Title text="WORK" align="left" />
-      <p className="works-page__subtitle">work 2025</p>
+      <ScrollReveal>
+        <p className="works-page__subtitle">work 2025</p>
+      </ScrollReveal>
 
       <ProjectGallery projects={projects} />
     </section>

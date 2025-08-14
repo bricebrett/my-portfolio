@@ -1,20 +1,35 @@
-import Title from "./Title";
+"use client";
+
+import ScrollReveal from "./ScrollReveal";
+import Typewriter from "typewriter-effect";
 
 export default function Hero() {
   return (
     <section className="hero">
       <div className="hero__row hero__row--top">
-        <h1 className="hero__title">BRICE BRETTINGER</h1>
-        {/* <div className="hero__photo">
-          <img src="../images/photo-brice.jpg" alt="" />
-        </div> */}
+        <ScrollReveal>
+          <h1 className="hero__title">
+            <Typewriter
+              options={{
+                strings: ["BRICE<br>BRETTINGER", "DEVELOPPEUR<br>WEB"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </h1>
+        </ScrollReveal>
       </div>
+
       <div className="hero__row hero__row--bottom">
-        <p className="hero__email">nom@site.com</p>
-        <p className="hero__description">
-          Hello, étant passionné par le web, je transforme des concepts en
-          projets qui prennent vie à l’écran.
-        </p>
+        <ScrollReveal>
+          <p className="hero__email">nom@site.com</p>
+        </ScrollReveal>
+        <ScrollReveal>
+          <p className="hero__description">
+            Hello, étant passionné par le web, je transforme des concepts en
+            projets qui prennent vie à l’écran.
+          </p>
+        </ScrollReveal>
       </div>
     </section>
   );

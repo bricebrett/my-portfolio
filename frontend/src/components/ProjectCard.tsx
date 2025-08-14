@@ -22,12 +22,38 @@ export default function ProjectCard({ project }: Props) {
       />
       <div className="overlay">
         <h3>{project.title}</h3>
-        {/* <p>{project.description}</p>
+        <p>{project.description}</p>
         <div className="tags">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
-        </div> */}
+        </div>
+        <div className="links">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./images/logo/github.svg"
+                alt="GitHub"
+                className="icon"
+              />
+              GitHub
+            </a>
+          )}
+          {project.demoUrl && (
+            <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
+              <img
+                src="./images/logo/code-solid-full.svg"
+                alt="Demo"
+                className="icon"
+              />
+              Demo
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );

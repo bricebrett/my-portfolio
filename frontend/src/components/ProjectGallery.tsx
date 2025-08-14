@@ -1,4 +1,5 @@
 import ProjectCard from "./ProjectCard";
+import ScrollReveal from "./ScrollReveal";
 
 export interface Project {
   _id: string;
@@ -21,7 +22,9 @@ export default function ProjectGallery({ projects, limit }: Props) {
   return (
     <div className="project-gallery">
       {items.map((project) => (
-        <ProjectCard key={project._id} project={project} />
+        <ScrollReveal>
+          <ProjectCard key={project._id} project={project} />
+        </ScrollReveal>
       ))}
     </div>
   );

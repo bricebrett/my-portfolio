@@ -1,5 +1,6 @@
 import Title from "@/components/Title";
 import ContactForm from "@/components/ContactForm";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function ContactPage() {
   return (
@@ -10,7 +11,9 @@ export default function ContactPage() {
         </header>
 
         <div className="contact-page__grid">
-          <div className="contact-page__info">nom@site.com</div>
+          <ScrollReveal>
+            <div className="contact-page__info">nom@site.com</div>
+          </ScrollReveal>
 
           <ContactForm className="contact-page__form" />
         </div>

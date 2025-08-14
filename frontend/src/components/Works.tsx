@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import RedirectionButton from "./RedirectionButton";
 import ProjectGallery, { Project } from "./ProjectGallery";
+import ScrollReveal from "./ScrollReveal";
 
 export default function Works() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -19,7 +20,9 @@ export default function Works() {
   return (
     <section className="works">
       <div className="works__header">
-        <h2 className="works__title">work.</h2>
+        <ScrollReveal>
+          <h2 className="works__title">work.</h2>
+        </ScrollReveal>
         <RedirectionButton href="/works" className="works__button">
           Show More
         </RedirectionButton>

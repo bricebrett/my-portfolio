@@ -9,6 +9,7 @@
   }
 
   &__title {
+    z-index: 1;
     font-size: 30px;
     @include mixins.text-style-default;
   }
