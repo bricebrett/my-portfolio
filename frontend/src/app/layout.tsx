@@ -3,6 +3,7 @@ import "../assets/globals.scss";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FullWidthDivider from "@/components/FullWidthDivider";
+import CustomCursor from "@/components/CustomCursor";
 
 export const metadata = {
   title: "Mon Portfolio",
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="fr">
       <body>
+        <CustomCursor />
         <Header />
         <FullWidthDivider />
         <main>{children}</main>
