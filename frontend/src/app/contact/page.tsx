@@ -12,7 +12,7 @@ export default function ContactPage() {
 
         <div className="contact-page__grid">
           <ScrollReveal>
-            <div className="contact-page__info">nom@site.com</div>
+            <div className="contact-page__phone">06 68 20 95 56</div>
           </ScrollReveal>
 
           <ContactForm className="contact-page__form" />

@@ -11,10 +11,10 @@ export default function Header() {
           </Link>
           <nav className="main-header__nav">
             <Link href="/works" className="main-header__link">
-              Works
+              Projets
             </Link>
             <Link href="/about" className="main-header__link">
-              About
+              A propos
             </Link>
             <Link href="/contact" className="main-header__link">
               Contact

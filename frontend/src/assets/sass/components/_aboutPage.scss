@@ -10,6 +10,13 @@
       display: flex;
       flex-direction: column;
     }
+
+    &--formations {
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
   }
 
   .section-head__title {

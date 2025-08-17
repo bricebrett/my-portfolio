@@ -21,10 +21,10 @@ export default function Works() {
     <section className="works">
       <div className="works__header">
         <ScrollReveal>
-          <h2 className="works__title">work.</h2>
+          <h2 className="works__title">projets.</h2>
         </ScrollReveal>
         <RedirectionButton href="/works" className="works__button">
-          Show More
+          Afficher plus
         </RedirectionButton>
       </div>
 

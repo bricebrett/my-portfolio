@@ -4,11 +4,11 @@ import { PropsWithChildren, useEffect, useRef } from "react";
 import { motion, useAnimation, useInView, Variants } from "framer-motion";
 
 type RevealProps = PropsWithChildren<{
-  y?: number; // distance verticale
-  duration?: number; // en secondes
-  delay?: number; // en secondes
-  once?: boolean; // true = rejoue pas
-  amount?: number; // fraction visible pour déclencher (0..1)
+  y?: number;
+  duration?: number;
+  delay?: number;
+  once?: boolean;
+  amount?: number;
 }>;
 
 const variants = (y: number): Variants => ({
@@ -27,11 +27,10 @@ export default function Reveal({
   const ref = useRef<HTMLDivElement | null>(null);
   const controls = useAnimation();
 
-  // useInView est évalué après hydratation → pas de flash d'opacité 0 bloquée
   const inView = useInView(ref, {
     once,
-    amount, // ~20% de l’élément doit être visible
-    margin: "0px 0px -10% 0px", // petit “boost” pour déclencher un poil plus tôt
+    amount,
+    margin: "0px 0px -10% 0px",
   });
 
   useEffect(() => {

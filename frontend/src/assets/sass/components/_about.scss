@@ -20,7 +20,7 @@
   }
 
   &__headline {
-    font-size: 50px;
+    font-size: 40px;
     @include mixins.text-style-default;
     max-width: 764px;
     margin: 0;
@@ -29,9 +29,7 @@
   &__content {
     justify-content: end;
     align-items: center;
-    // gap: 76px;
     display: flex;
-    // padding-left: 100px;
 
     @media (max-width: 768px) {
       flex-direction: column;
@@ -55,8 +53,7 @@
 
   &__description {
     flex: 2;
-    // max-width: 311px;
-    max-width: 550px;
+    max-width: 750px;
     font-size: 30px;
     @include mixins.text-style-default;
   }

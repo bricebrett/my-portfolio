@@ -1,6 +1,7 @@
 import Title from "@/components/Title";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
+import Formations from "@/components/Formations";
 
 export default function AboutPage() {
   return (
@@ -16,9 +17,16 @@ export default function AboutPage() {
 
         <section className="about-page__block about-page__block--skills">
           <header className="section-head">
-            <h2 className="section-head__title">skills.</h2>
+            <h2 className="section-head__title">compétences.</h2>
           </header>
           <Skills />
+        </section>
+
+        <section className="about-page__block about-page__block--formations">
+          <header className="section-head">
+            <h2 className="section-head__title">formations.</h2>
+          </header>
+          <Formations />
         </section>
       </div>
     </section>

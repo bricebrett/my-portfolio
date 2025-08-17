@@ -1,5 +1,3 @@
-// src/projects/projects.module.ts
-
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectsService } from './projects.service';

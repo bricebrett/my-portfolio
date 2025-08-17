@@ -20,6 +20,7 @@
         margin-bottom: 150px;
       }
     }
+
     @media (max-width: 809px) and (min-width: 0px) {
       flex-direction: column;
     }
@@ -30,9 +31,11 @@
     letter-spacing: -0.09em;
     margin: 0;
     word-break: break-word;
+
     @media (max-width: 1199px) and (min-width: 810px) {
       font-size: 116px;
     }
+
     @media (max-width: 809px) and (min-width: 0px) {
       font-size: 76px;
     }
@@ -60,6 +63,18 @@
     font-size: 30px;
     font-weight: 400;
     margin: 0;
+
+    @media (max-width: 809px) and (min-width: 0px) {
+      margin-bottom: 30px;
+    }
+  }
+
+  &__phone {
+    @include mixins.text-style-default;
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+
     @media (max-width: 809px) and (min-width: 0px) {
       margin-bottom: 30px;
     }
@@ -71,14 +86,17 @@
     line-height: 1.1em;
     margin: 0;
     @include mixins.text-style-default;
+
     @media (max-width: 1199px) and (min-width: 810px) {
       font-size: 32px;
       max-width: 550px;
     }
   }
+
   @media (max-width: 1199px) and (min-width: 810px) {
     min-height: 750px;
   }
+
   @media (max-width: 809px) and (min-width: 0px) {
     min-height: 650px;
   }

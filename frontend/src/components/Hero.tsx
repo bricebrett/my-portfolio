@@ -22,7 +22,7 @@ export default function Hero() {
 
       <div className="hero__row hero__row--bottom">
         <ScrollReveal>
-          <p className="hero__email">nom@site.com</p>
+          <p className="hero__phone">06 68 20 95 56</p>
         </ScrollReveal>
         <ScrollReveal>
           <p className="hero__description">

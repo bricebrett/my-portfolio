@@ -1,3 +1,5 @@
+@use "../abstracts/mixins" as mixins;
+
 .contact-page {
   padding: 30px 80px 80px;
 
@@ -11,6 +13,11 @@
     grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: 40px;
+  }
+
+  &__phone {
+    @include mixins.text-style-default;
+    font-size: 30px;
   }
 
   &__info {

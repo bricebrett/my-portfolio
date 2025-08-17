@@ -1,0 +1,79 @@
+.formations {
+  &__title {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    flex-direction: column;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    width: 100%;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: background-color 0.8s ease, color 0.8s ease;
+
+    &:hover {
+      background-color: #000;
+
+      .formations__annee,
+      .formations__intitule,
+      .formations__details {
+        color: #fff;
+      }
+
+      .formations__ecole {
+        color: #ddd;
+      }
+    }
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  &__annee {
+    font-weight: bold;
+    font-size: 20px;
+    min-width: 120px;
+    transition: color 0.3s ease;
+  }
+
+  &__details {
+    flex-direction: column;
+    display: flex;
+    text-align: end;
+    gap: 5px;
+    transition: color 0.3s ease;
+    @media (max-width: 768px) {
+      text-align: start;
+      gap: 10px;
+    }
+  }
+
+  &__intitule {
+    font-size: 22px;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+
+  &__ecole {
+    font-size: 18px;
+    color: #888;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+}

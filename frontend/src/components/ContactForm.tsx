@@ -64,7 +64,6 @@ export default function ContactForm({ className = "", onSuccess }: Props) {
       setValues(initialValues);
       onSuccess?.();
     } catch (err: unknown) {
-      // ✅ plus de any
       const msg =
         err instanceof Error ? err.message : "Une erreur est survenue.";
       setError(msg);

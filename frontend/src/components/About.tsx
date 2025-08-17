@@ -10,30 +10,36 @@ export default function About({ showButton = true }: AboutProps) {
     <section className="about">
       <div className="about__header">
         <ScrollReveal>
-          <h2 className="about__title">about.</h2>
+          <h2 className="about__title">à propos.</h2>
         </ScrollReveal>
         {showButton && (
           <RedirectionButton href="/about" className="about__button">
-            Show More
+            Afficher plus
           </RedirectionButton>
         )}
       </div>
       <ScrollReveal>
         <h3 className="about__headline">
-          Je conçois des expériences web alliant esthétique et simplicité.
-          Chaque projet est une occasion d’explorer, tester et trouver
-          l’équilibre parfait entre design et fonctionnalité.
+          Passionné par le développement front-end, j’aime donner vie aux
+          interfaces et transformer des maquettes en expériences fluides,
+          interactives et accessibles. Le code côté client me permet d’exprimer
+          ma créativité en travaillant directement sur ce que l’utilisateur
+          perçoit et ressent. Cela dit, je reste curieux et ouvert à
+          l’apprentissage du back-end, car comprendre l’ensemble d’une
+          application permet d’imaginer des solutions plus cohérentes et
+          performantes.
         </h3>
       </ScrollReveal>
       <ScrollReveal>
         <div className="about__content">
           <p className="about__description">
-            Curieux et toujours en veille, je m’inspire autant du design
-            contemporain que des nouvelles tendances technologiques. Que ce soit
-            à travers un code propre ou un visuel soigné, j’accorde de
-            l’importance aux détails qui font la différence. Pour moi, un bon
-            projet est celui qui parvient à combiner performance, clarté et
-            identité forte.
+            Mon parcours dans le design m’a appris à porter une attention
+            particulière à l’esthétique et à l’ergonomie. J’aime créer des
+            visuels clairs, élégants et efficaces, mais aussi réfléchir à la
+            manière dont ils s’intègrent dans une expérience plus large. Pour
+            moi, le développement n’est pas qu’une affaire de code : c’est une
+            façon de raconter une histoire à travers une interface, en trouvant
+            l’équilibre entre créativité, technique et simplicité.
           </p>
         </div>
       </ScrollReveal>

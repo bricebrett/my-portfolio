@@ -1,12 +1,15 @@
 import ScrollReveal from "./ScrollReveal";
+import Link from "next/link";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <ScrollReveal>
         <div className="footer__top">
-          <a href="https://linkedin.com">Linkedin</a>
-          <a href="https://github.com">GitHub</a>
+          <a href="https://www.linkedin.com/in/brice-brettinger-2539a5234/">
+            Linkedin
+          </a>
+          <a href="https://github.com/bricebrett">GitHub</a>
         </div>
       </ScrollReveal>
 
@@ -17,8 +20,10 @@ export default function Footer() {
             suis disponible.
           </h2>
           <div className="footer__middle-actions">
-            <button>Contact</button>
-            <div className="dot">Available For Work</div>
+            <Link href="/contact">
+              <button>Contact</button>
+            </Link>
+            <div className="dot">Ouvert aux opportunités</div>
           </div>
         </div>
       </ScrollReveal>
@@ -26,11 +31,10 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="footer__bottom-section">
           <span>+33 6 68 20 95 56</span>
-          <span>hello@site.com</span>
         </div>
         <div className="footer__bottom-section">
-          <span>Designed & Developed</span>
-          <span>by Brice Brettinger</span>
+          <span>Conçu & Développé</span>
+          <span>par Brice Brettinger</span>
         </div>
         <div className="footer__bottom-section">
           <span>All rights reserved,</span>
