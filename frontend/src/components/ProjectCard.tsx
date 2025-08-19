@@ -18,7 +18,6 @@ export default function ProjectCard({ project }: Props) {
   const [active, setActive] = useState(false);
 
   const handleToggle = () => {
-    // Seulement sur mobile (max 809px)
     if (window.innerWidth <= 809) {
       setActive(!active);
     }
