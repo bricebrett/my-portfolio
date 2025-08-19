@@ -19,7 +19,6 @@ export async function POST(req: Request) {
       message = "",
     } = (await req.json()) as Partial<Body>;
 
-    // validations simples
     if (!name.trim() || !email.trim() || !message.trim()) {
       return NextResponse.json(
         { ok: false, error: "Merci de remplir tous les champs." },
