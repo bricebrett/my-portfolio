@@ -8,10 +8,11 @@
     object-fit: cover;
     display: block;
     transition: transform 1.5s ease;
+
     @media (max-width: 1199px) and (min-width: 810px) {
       height: 500px;
     }
-    @media (max-width: 809px) and (min-width: 0px) {
+    @media (max-width: 809px) {
       height: 500px;
     }
   }
@@ -32,6 +33,7 @@
     h3 {
       margin: 0;
     }
+
     .tags {
       gap: 10px;
       display: flex;
@@ -41,11 +43,13 @@
   .links {
     display: flex;
     gap: 100px;
+
     a {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 10px;
+
       img {
         width: 30px;
         height: 30px;
@@ -57,9 +61,17 @@
     .project-image {
       transform: scale(1.1);
     }
-
     .overlay {
       opacity: 1;
+    }
+  }
+
+  &.active {
+    .overlay {
+      opacity: 1;
+    }
+    .project-image {
+      transform: scale(1.1);
     }
   }
 }

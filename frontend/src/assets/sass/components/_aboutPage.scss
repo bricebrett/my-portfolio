@@ -22,4 +22,7 @@
   .section-head__title {
     @include mixins.text-style-default;
   }
+  @media (max-width: 809px) {
+    padding: 30px 20px 20px;
+  }
 }

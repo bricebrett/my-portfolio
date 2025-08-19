@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 interface Project {
   _id: string;
   title: string;
@@ -13,8 +15,20 @@ interface Props {
 }
 
 export default function ProjectCard({ project }: Props) {
+  const [active, setActive] = useState(false);
+
+  const handleToggle = () => {
+    // Seulement sur mobile (max 809px)
+    if (window.innerWidth <= 809) {
+      setActive(!active);
+    }
+  };
+
   return (
-    <div className="project-card">
+    <div
+      className={`project-card ${active ? "active" : ""}`}
+      onClick={handleToggle}
+    >
       <img
         src={project.imageUrl}
         alt={project.title}

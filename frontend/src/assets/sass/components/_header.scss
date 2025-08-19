@@ -6,6 +6,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 809px) {
+      justify-content: center;
+    }
   }
 
   &__logo {
@@ -16,6 +19,9 @@
   &__nav {
     display: flex;
     gap: 40px;
+    @media (max-width: 809px) {
+      display: none;
+    }
   }
 
   &__link {
