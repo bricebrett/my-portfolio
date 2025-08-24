@@ -22,6 +22,11 @@ const FORMATIONS: FormationItem[] = [
     intitule: "Formation Intégrateur Web",
     ecole: "OpenClassRooms",
   },
+  {
+    annee: "2025 - en cours",
+    intitule: "Pré Master of Science",
+    ecole: "Epitech, Strasbourg",
+  },
 ];
 
 export default function Formations() {
