@@ -1,6 +1,7 @@
 import Title from "@/components/Title";
 import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
+import { PHONE_DISPLAY, PHONE_HREF } from "@/constants/contact";
 
 export default function ContactPage() {
   return (
@@ -12,7 +13,9 @@ export default function ContactPage() {
 
         <div className="contact-page__grid">
           <ScrollReveal>
-            <div className="contact-page__phone">06 68 20 95 56</div>
+            <a className="contact-page__phone" href={PHONE_HREF}>
+              {PHONE_DISPLAY}
+            </a>
           </ScrollReveal>
 
           <ContactForm className="contact-page__form" />

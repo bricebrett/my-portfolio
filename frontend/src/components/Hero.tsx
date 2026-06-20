@@ -2,6 +2,7 @@
 
 import ScrollReveal from "./ScrollReveal";
 import Typewriter from "typewriter-effect";
+import { PHONE_DISPLAY } from "@/constants/contact";
 
 export default function Hero() {
   return (
@@ -22,7 +23,7 @@ export default function Hero() {
 
       <div className="hero__row hero__row--bottom">
         <ScrollReveal>
-          <p className="hero__phone">06 68 20 95 56</p>
+          <p className="hero__phone">{PHONE_DISPLAY}</p>
         </ScrollReveal>
         <ScrollReveal>
           <p className="hero__description">

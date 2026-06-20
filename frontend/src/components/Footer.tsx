@@ -1,15 +1,17 @@
 import ScrollReveal from "./ScrollReveal";
 import Link from "next/link";
+import {
+  PHONE_INTERNATIONAL,
+  SOCIAL_LINKS,
+} from "@/constants/contact";
 
 export default function Footer() {
   return (
     <footer className="footer">
       <ScrollReveal>
         <div className="footer__top">
-          <a href="https://www.linkedin.com/in/brice-brettinger-2539a5234/">
-            Linkedin
-          </a>
-          <a href="https://github.com/bricebrett">GitHub</a>
+          <a href={SOCIAL_LINKS.linkedin}>Linkedin</a>
+          <a href={SOCIAL_LINKS.github}>GitHub</a>
         </div>
       </ScrollReveal>
 
@@ -30,7 +32,7 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="footer__bottom-section">
-          <span>+33 6 68 20 95 56</span>
+          <span>{PHONE_INTERNATIONAL}</span>
         </div>
         <div className="footer__bottom-section">
           <span>Conçu & Développé</span>
