@@ -1,15 +1,6 @@
 import ProjectCard from "./ProjectCard";
 import ScrollReveal from "./ScrollReveal";
-
-export interface Project {
-  _id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tags: string[];
-  githubUrl: string;
-  demoUrl: string;
-}
+import type { Project } from "@/types/project";
 
 interface Props {
   projects: Project[];

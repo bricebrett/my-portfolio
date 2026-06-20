@@ -1,15 +1,6 @@
 import { useState } from "react";
 import Image from "next/image";
-
-interface Project {
-  _id: string;
-  title: string;
-  description: string;
-  imageUrl: string;
-  tags: string[];
-  githubUrl: string;
-  demoUrl: string;
-}
+import type { Project } from "@/types/project";
 
 interface Props {
   project: Project;

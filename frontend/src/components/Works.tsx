@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import RedirectionButton from "./RedirectionButton";
-import ProjectGallery, { Project } from "./ProjectGallery";
+import ProjectGallery from "./ProjectGallery";
 import ScrollReveal from "./ScrollReveal";
+import type { Project } from "@/types/project";
 
 export default function Works() {
   const [projects, setProjects] = useState<Project[]>([]);

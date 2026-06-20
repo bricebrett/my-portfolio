@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ProjectGallery, { Project } from "@/components/ProjectGallery";
+import ProjectGallery from "@/components/ProjectGallery";
+import type { Project } from "@/types/project";
 import Title from "@/components/Title";
 import ScrollReveal from "@/components/ScrollReveal";
 
