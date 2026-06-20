@@ -4,10 +4,12 @@ import type { Project } from "@/types/project";
 
 interface Props {
   project: Project;
+  headingLevel?: 2 | 3;
 }
 
-export default function ProjectCard({ project }: Props) {
+export default function ProjectCard({ project, headingLevel = 3 }: Props) {
   const [active, setActive] = useState(false);
+  const Heading = `h${headingLevel}` as const;
 
   const handleToggle = () => {
     if (window.innerWidth <= 809) {
@@ -26,7 +28,7 @@ export default function ProjectCard({ project }: Props) {
         className="project-image"
       />
       <div className="overlay">
-        <h3>{project.title}</h3>
+        <Heading>{project.title}</Heading>
         <p>{project.description}</p>
         <div className="tags">
           {project.tags.map((tag) => (

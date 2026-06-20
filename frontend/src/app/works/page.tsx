@@ -15,7 +15,7 @@ export default function WorksPage() {
         <p className="works-page__subtitle">work 2025</p>
       </ScrollReveal>
 
-      <ProjectGallery projects={projects} />
+      <ProjectGallery projects={projects} headingLevel={2} />
     </section>
   );
 }
