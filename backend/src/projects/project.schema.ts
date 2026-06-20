@@ -5,16 +5,16 @@ export type ProjectDocument = Project & Document;
 
 @Schema()
 export class Project {
-  @Prop()
+  @Prop({ required: true })
   title: string;
 
-  @Prop()
+  @Prop({ required: true })
   description: string;
 
-  @Prop()
+  @Prop({ required: true })
   imageUrl: string;
 
-  @Prop([String])
+  @Prop({ type: [String], default: [] })
   tags: string[];
 
   @Prop()
