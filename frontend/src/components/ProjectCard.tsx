@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 
 interface Project {
   _id: string;
@@ -48,9 +49,11 @@ export default function ProjectCard({ project }: Props) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <img
-                src="./images/logo/github.svg"
+              <Image
+                src="/images/logo/github.svg"
                 alt="GitHub"
+                width={30}
+                height={30}
                 className="icon"
               />
               GitHub
@@ -58,9 +61,11 @@ export default function ProjectCard({ project }: Props) {
           )}
           {project.demoUrl && (
             <a href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-              <img
-                src="./images/logo/code-solid-full.svg"
+              <Image
+                src="/images/logo/code-solid-full.svg"
                 alt="Demo"
+                width={30}
+                height={30}
                 className="icon"
               />
               Demo
