@@ -1,22 +1,11 @@
 "use client";
-import { useEffect, useState } from "react";
 import RedirectionButton from "./RedirectionButton";
 import ProjectGallery from "./ProjectGallery";
 import ScrollReveal from "./ScrollReveal";
-import type { Project } from "@/types/project";
+import { useProjects } from "@/hooks/useProjects";
 
 export default function Works() {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetch("https://my-portfolio-production-1d50.up.railway.app/projects")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setProjects)
-      .catch((err) => console.error("Erreur de chargement des projets :", err));
-  }, []);
+  const projects = useProjects();
 
   return (
     <section className="works">

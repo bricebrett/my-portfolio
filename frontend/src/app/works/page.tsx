@@ -1,23 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import ProjectGallery from "@/components/ProjectGallery";
-import type { Project } from "@/types/project";
 import Title from "@/components/Title";
 import ScrollReveal from "@/components/ScrollReveal";
+import { useProjects } from "@/hooks/useProjects";
 
 export default function WorksPage() {
-  const [projects, setProjects] = useState<Project[]>([]);
-
-  useEffect(() => {
-    fetch("https://my-portfolio-production-1d50.up.railway.app/projects")
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setProjects)
-      .catch((err) => console.error("Erreur de chargement des projets :", err));
-  }, []);
+  const projects = useProjects();
 
   return (
     <section className="works-page">
