@@ -14,6 +14,9 @@ export class Project {
   @Prop({ required: true })
   imageUrl: string;
 
+  @Prop({ required: true })
+  year: number;
+
   @Prop({ type: [String], default: [] })
   tags: string[];
 
