@@ -12,7 +12,7 @@ export default function Hero() {
           <h1 className="hero__title">
             <Typewriter
               options={{
-                strings: ["BRICE<br>BRETTINGER", "DEVELOPPEUR<br>WEB"],
+                strings: ["BRICE<br>BRETTINGER", "DEVELOPPEUR<br>FULLSTACK"],
                 autoStart: true,
                 loop: true,
               }}
