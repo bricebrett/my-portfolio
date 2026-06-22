@@ -20,7 +20,7 @@
   }
 
   &__headline {
-    font-size: 40px;
+    font-size: clamp(1.5rem, 3vw, 40px);
     @include mixins.text-style-default;
     max-width: 764px;
     margin: 0;
@@ -54,7 +54,7 @@
   &__description {
     flex: 2;
     max-width: 750px;
-    font-size: 30px;
+    font-size: clamp(1.1rem, 2vw, 30px);
     @include mixins.text-style-default;
   }
 }

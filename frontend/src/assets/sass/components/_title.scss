@@ -1,5 +1,5 @@
 .page-title {
-  font-size: 174px;
+  font-size: clamp(2.75rem, min(11vw, 18vh), 174px);
   letter-spacing: -0.09em;
   margin-bottom: 60px;
   word-break: break-word;
@@ -10,11 +10,5 @@
 
   &.center {
     text-align: center;
-  }
-  @media (max-width: 1199px) and (min-width: 810px) {
-    font-size: 116px;
-  }
-  @media (max-width: 809px) and (min-width: 0px) {
-    font-size: 62px;
   }
 }

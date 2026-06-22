@@ -1,0 +1,22 @@
+// =====================================================================
+// Scroll snap : uniquement le footer.
+// "proximity" + scroll animé = la version la plus douce possible en CSS :
+// le reste du site scrolle normalement, et seul le footer "s'aligne"
+// en douceur quand on s'en approche, sans à-coup brutal.
+// =====================================================================
+
+html {
+  scroll-snap-type: y proximity;
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+// Seule section qui "snappe" : le footer (déjà en pleine hauteur).
+.footer {
+  scroll-snap-align: start;
+}

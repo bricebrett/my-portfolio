@@ -27,18 +27,12 @@
   }
 
   &__title {
-    font-size: 174px;
+    // Borné par la largeur (vw) ET la hauteur (vh) pour tenir dans 100vh,
+    // plafonné à 174px sur grand écran, plancher lisible à 2.75rem.
+    font-size: clamp(2.75rem, min(12vw, 19vh), 174px);
     letter-spacing: -0.09em;
     margin: 0;
     word-break: break-word;
-
-    @media (max-width: 1199px) and (min-width: 810px) {
-      font-size: 116px;
-    }
-
-    @media (max-width: 809px) and (min-width: 0px) {
-      font-size: 53px;
-    }
   }
 
   &__photo {
@@ -82,13 +76,12 @@
 
   &__description {
     max-width: 763px;
-    font-size: 40px;
+    font-size: clamp(1.25rem, 3vw, 40px);
     line-height: 1.1em;
     margin: 0;
     @include mixins.text-style-default;
 
     @media (max-width: 1199px) and (min-width: 810px) {
-      font-size: 32px;
       max-width: 550px;
     }
   }
