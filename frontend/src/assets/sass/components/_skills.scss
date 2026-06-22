@@ -43,7 +43,6 @@
 
   &__track {
     display: flex;
-    gap: var(--gap);
     width: max-content;
 
     & > * {
@@ -58,6 +57,9 @@
     display: flex;
     align-items: center;
     gap: 0.4rem;
+    // Espace "porté" par chaque élément (au lieu d'un gap sur la piste) :
+    // l'espacement reste périodique, donc la translation -50% est sans coupure.
+    margin-right: var(--gap);
 
     img {
       height: 60px;
