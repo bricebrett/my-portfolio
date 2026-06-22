@@ -20,26 +20,25 @@ export default function About({ showButton = true }: AboutProps) {
       </div>
       <ScrollReveal>
         <h3 className="about__headline">
-          Passionné par le développement front-end, j’aime donner vie aux
-          interfaces et transformer des maquettes en expériences fluides,
-          interactives et accessibles. Le code côté client me permet d’exprimer
-          ma créativité en travaillant directement sur ce que l’utilisateur
-          perçoit et ressent. Cela dit, je reste curieux et ouvert à
-          l’apprentissage du back-end, car comprendre l’ensemble d’une
-          application permet d’imaginer des solutions plus cohérentes et
-          performantes.
+          Actuellement en pré-Master of Science à Epitech Strasbourg, j’intègre
+          le Master en septembre 2026 et je recherche une alternance de deux ans
+          à partir de cette date, au rythme 4 semaines en entreprise / 2
+          semaines en école. Mon parcours mêle développement front-end et
+          back-end, avec un vrai intérêt pour la data et l’IA. Je n’aime pas me
+          limiter à une seule couche technique : comprendre comment une
+          application fonctionne dans son ensemble m’aide à proposer des
+          solutions plus pertinentes.
         </h3>
       </ScrollReveal>
       <ScrollReveal>
         <div className="about__content">
           <p className="about__description">
-            Mon parcours dans le design m’a appris à porter une attention
-            particulière à l’esthétique et à l’ergonomie. J’aime créer des
-            visuels clairs, élégants et efficaces, mais aussi réfléchir à la
-            manière dont ils s’intègrent dans une expérience plus large. Pour
-            moi, le développement n’est pas qu’une affaire de code : c’est une
-            façon de raconter une histoire à travers une interface, en trouvant
-            l’équilibre entre créativité, technique et simplicité.
+            Je suis curieux et j’apprends vite, ce qui me permet de sortir de ma
+            zone de confort technique quand un projet le demande. J’accorde de
+            l’importance à la qualité du code et à l’expérience utilisateur,
+            sans perdre de vue les contraintes concrètes comme les délais ou la
+            maintenabilité. Disponible dès septembre, je reste ouvert à toute
+            discussion sur une alternance qui correspondrait à mon profil.
           </p>
         </div>
       </ScrollReveal>
