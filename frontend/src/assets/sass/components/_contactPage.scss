@@ -2,6 +2,13 @@
 
 .contact-page {
   padding: 30px 80px 80px;
+  // Occupe la hauteur d'un écran et centre le contenu verticalement
+  // (supprime le grand vide sous le formulaire).
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   &__header {
     margin-bottom: 60px;

@@ -17,6 +17,11 @@
     a {
       text-decoration: none;
       color: white;
+      transition: color 0.3s ease-in-out;
+
+      &:hover {
+        color: #a4a4a4;
+      }
     }
   }
 
