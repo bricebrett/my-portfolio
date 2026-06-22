@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 type Direction = "left" | "right";
@@ -51,20 +51,48 @@ function TickerRow({
   direction?: Direction;
   duration?: number;
 }) {
-  const dup = [...items, ...items];
   const prefersReducedMotion = useReducedMotion();
 
-  type CSSVarStyle = React.CSSProperties & { ["--duration"]?: string };
-  const style: CSSVarStyle = { ["--duration"]: `${duration}s` };
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const groupRef = useRef<HTMLUListElement>(null);
 
-  const xFrames = direction === "right" ? ["-50%", "0%"] : ["0%", "-50%"];
+  // Nombre de copies identiques de la liste affichées côte à côte.
+  // Recalculé pour que le contenu total fasse au moins 2x la largeur visible,
+  // quel que soit le nombre de logos (ex. Design n'en a que 5).
+  const [repeat, setRepeat] = useState(2);
+
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const group = groupRef.current;
+    if (!viewport || !group) return;
+
+    const compute = () => {
+      const viewportWidth = viewport.clientWidth;
+      const groupWidth = group.scrollWidth; // largeur d'une copie de la liste
+      if (groupWidth === 0) return;
+      // Au moins 2 copies, et assez pour couvrir 2x la largeur du conteneur.
+      const needed = Math.max(2, Math.ceil((2 * viewportWidth) / groupWidth));
+      setRepeat(needed);
+    };
+
+    compute();
+    const observer = new ResizeObserver(compute);
+    observer.observe(viewport);
+    observer.observe(group);
+    return () => observer.disconnect();
+  }, [items]);
+
+  // Le bouclage se fait sur une largeur de copie = -100/repeat % de la piste.
+  const distance = 100 / repeat;
+  const xFrames =
+    direction === "right" ? [`-${distance}%`, "0%"] : ["0%", `-${distance}%`];
 
   return (
-    <div className="skills__row" style={style}>
+    <div className="skills__row">
       <span className="skills__label">{label}</span>
 
-      <div className="skills__viewport">
-        <motion.ul
+      <div className="skills__viewport" ref={viewportRef}>
+        <motion.div
           className={`skills__track ${
             direction === "right" ? "is-right" : "is-left"
           }`}
@@ -80,24 +108,32 @@ function TickerRow({
                 }
           }
         >
-          {dup.map((item, i) => {
-            const showIcon = isIconPath(item);
-            return (
-              <li className="skills__item" key={`${label}-${i}`}>
-                {showIcon ? (
-                  <img
-                    className="skills__icon"
-                    src={item}
-                    alt={labelFromPath(item)}
-                    title={labelFromPath(item)}
-                  />
-                ) : (
-                  <span className="skills__text">{item}</span>
-                )}
-              </li>
-            );
-          })}
-        </motion.ul>
+          {Array.from({ length: repeat }).map((_, copyIndex) => (
+            <ul
+              className="skills__group"
+              key={copyIndex}
+              ref={copyIndex === 0 ? groupRef : undefined}
+            >
+              {items.map((item, i) => {
+                const showIcon = isIconPath(item);
+                return (
+                  <li className="skills__item" key={`${copyIndex}-${i}`}>
+                    {showIcon ? (
+                      <img
+                        className="skills__icon"
+                        src={item}
+                        alt={labelFromPath(item)}
+                        title={labelFromPath(item)}
+                      />
+                    ) : (
+                      <span className="skills__text">{item}</span>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
+        </motion.div>
       </div>
 
       <div className="skills__fade" aria-hidden="true" />

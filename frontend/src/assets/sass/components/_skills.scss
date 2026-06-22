@@ -52,6 +52,13 @@
     will-change: transform;
   }
 
+  &__group {
+    display: flex;
+    flex: 0 0 auto;
+    margin: 0;
+    padding: 0;
+  }
+
   &__item {
     list-style: none;
     display: flex;
