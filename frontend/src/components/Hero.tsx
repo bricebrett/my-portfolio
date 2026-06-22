@@ -27,8 +27,8 @@ export default function Hero() {
         </ScrollReveal>
         <ScrollReveal>
           <p className="hero__description">
-            Hello, étant passionné par le web, je transforme des concepts en
-            projets qui prennent vie à l’écran.
+            Hello, je recherche une alternance de deux ans à partir de septembre
+            2026 en fullstack, data ou IA.
           </p>
         </ScrollReveal>
       </div>
