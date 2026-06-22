@@ -6,4 +6,5 @@ export interface Project {
   tags: string[];
   githubUrl: string;
   demoUrl: string;
+  year?: number;
 }

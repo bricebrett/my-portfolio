@@ -1,5 +1,8 @@
 .works-page {
   padding: 30px 80px 80px;
+  &__section:not(:first-of-type) {
+    margin-top: 60px;
+  }
   &__subtitle {
     align-content: center;
     align-items: center;

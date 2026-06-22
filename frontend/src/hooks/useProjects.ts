@@ -22,7 +22,10 @@ export function useProjects() {
         return res.json();
       })
       .then((data: Project[]) => {
-        if (!cancelled) setProjects(data);
+        const sorted = [...data].sort(
+          (a, b) => (b.year ?? -Infinity) - (a.year ?? -Infinity)
+        );
+        if (!cancelled) setProjects(sorted);
       })
       .catch((err) =>
         console.error("Erreur de chargement des projets :", err)
