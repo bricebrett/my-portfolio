@@ -28,7 +28,8 @@ export default function Hero() {
         <ScrollReveal>
           <p className="hero__description">
             Hello, je recherche une alternance de deux ans à partir de septembre
-            2026 en fullstack, data ou IA.
+            2026 en fullstack, data ou IA. Si mon profil vous intéresse,
+            n’hésitez pas à me contacter.
           </p>
         </ScrollReveal>
       </div>
